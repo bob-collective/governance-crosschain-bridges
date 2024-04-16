@@ -22,6 +22,7 @@ import {
   eEthereumNetwork,
   eNetwork,
   eOptimismNetwork,
+  eBobNetwork,
   ePolygonNetwork,
   eXDaiNetwork,
 } from './helpers/types';
@@ -112,6 +113,8 @@ const hardhatConfig: HardhatUserConfig = {
       optimisticEthereum: OPTIMISTIC_ETHERSCAN_KEY,
       arbitrumOne: ARBISCAN_KEY,
       optimisticSepolia: OPTIMISTIC_ETHERSCAN_KEY,
+      bobTestnet: "asd", // blockscout just needs any non-empty string as api key
+      bob: "asd",        // blockscout just needs any non-empty string as api key
     },
     customChains: [
       {
@@ -130,6 +133,22 @@ const hardhatConfig: HardhatUserConfig = {
           browserURL: 'https://sepolia-optimism.etherscan.io',
         },
       },
+      {
+        network: "bobTestnet",
+        chainId: 111,
+        urls: {
+          apiURL: "https://explorerl2new-puff-bob-jznbxtoq7h.t.conduit.xyz/api",
+          browserURL: "https://explorerl2new-puff-bob-jznbxtoq7h.t.conduit.xyz"
+        }
+      },
+      {
+        network: "bob",
+        chainId: 60808,
+        urls: {
+          apiURL: "https://explorer.gobob.xyz/api",
+          browserURL: "https://explorer.gobob.xyz"
+        }
+      }
     ],
   },
   tenderly: {
@@ -145,6 +164,7 @@ const hardhatConfig: HardhatUserConfig = {
       ...getCommonNetworkConfig(eEthereumNetwork.sepolia, 11155111),
       companionNetworks: {
         optimism: eOptimismNetwork.testnet,
+        bob: eBobNetwork.testnet,
         arbitrum: eArbitrumNetwork.arbitrumTestnet,
       },
     },
@@ -153,6 +173,7 @@ const hardhatConfig: HardhatUserConfig = {
       ...getCommonNetworkConfig(eEthereumNetwork.main, 1),
       companionNetworks: {
         optimism: eOptimismNetwork.main,
+        bob: eBobNetwork.main,
         arbitrum: eArbitrumNetwork.arbitrum,
       },
     },
@@ -170,6 +191,13 @@ const hardhatConfig: HardhatUserConfig = {
     [eOptimismNetwork.main]: getCommonNetworkConfig(eOptimismNetwork.main, 10),
     [eOptimismNetwork.testnet]: {
       ...getCommonNetworkConfig(eOptimismNetwork.testnet, 11155420),
+      companionNetworks: {
+        l1: 'sepolia',
+      },
+    },
+    [eBobNetwork.main]: getCommonNetworkConfig(eBobNetwork.main, 60808),
+    [eBobNetwork.testnet]: {
+      ...getCommonNetworkConfig(eBobNetwork.testnet, 111),
       companionNetworks: {
         l1: 'sepolia',
       },

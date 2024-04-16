@@ -33,6 +33,8 @@
     "deploy:gov-bridge:arbitrum-testnet": "npm run hardhat:arbitrum-testnet -- --tags 'ArbitrumGov,Greeter'",
     "deploy:optimism:testnet": "hardhat --network optimisticSepolia deploy --tags 'OptimisticGov'",
     "deploy:optimism:mainnet": "hardhat --network optimism deploy --tags 'OptimisticGov'",
+    "deploy:bob:testnet": "hardhat --network bobTestnet deploy --tags 'OptimisticGov'",
+    "deploy:bob:mainnet": "hardhat --network bob deploy --tags 'OptimisticGov'",
     "deploy:arbitrum:testnet": "hardhat --network arbitrum-testnet deploy --tags 'ArbitrumGov'",
     "deploy:arbitrum:mainnet": "hardhat --network arbitrum deploy --tags 'ArbitrumGov'"
   },

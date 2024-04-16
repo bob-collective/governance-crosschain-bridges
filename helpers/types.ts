@@ -7,7 +7,8 @@ export type eNetwork =
   | ePolygonNetwork
   | eXDaiNetwork
   | eArbitrumNetwork
-  | eOptimismNetwork;
+  | eOptimismNetwork
+  | eBobNetwork;
 
 export enum eEthereumNetwork {
   goerli = 'goerli',
@@ -37,6 +38,11 @@ export enum eOptimismNetwork {
   testnet = 'optimisticSepolia',
 }
 
+export enum eBobNetwork {
+  main = 'bob',
+  testnet = 'bobTestnet',
+}
+
 export enum EthereumNetworkNames {
   goerli = 'goerli',
   main = 'main',
@@ -53,7 +59,8 @@ export type iParamsPerNetwork<T> =
   | iPolygonParamsPerNetwork<T>
   | iXDaiParamsPerNetwork<T>
   | iArbitrumParamsPerNetwork<T>
-  | iOptimismParamsPerNetwork<T>;
+  | iOptimismParamsPerNetwork<T>
+  | iBobParamsPerNetwork<T>;
 
 export interface iParamsPerNetworkAll<T>
   extends iEthereumParamsPerNetwork<T>,
@@ -86,6 +93,11 @@ export interface iArbitrumParamsPerNetwork<T> {
 export interface iOptimismParamsPerNetwork<T> {
   [eOptimismNetwork.main]: T;
   [eOptimismNetwork.testnet]: T;
+}
+
+export interface iBobParamsPerNetwork<T> {
+  [eBobNetwork.main]: T;
+  [eBobNetwork.testnet]: T;
 }
 
 export interface ObjectString {
